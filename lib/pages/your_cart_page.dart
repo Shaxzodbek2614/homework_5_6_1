@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:omework_5_6_1/pages/products_page.dart';
+import 'package:omework_5_6_1/pages/shipping_page.dart';
 
 class YourCartPage extends StatefulWidget {
   final Map<String, dynamic> item;
@@ -237,28 +238,33 @@ class _YourCartPageState extends State<YourCartPage> {
               },
             ),
           ),
-          Container(
-            margin:
-            const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-            padding: const EdgeInsets.all(15),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.indigo,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              children: [
-                const Text(
-                  "Check out",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  "\$${hisobla()}",
-                  style:
-                  const TextStyle(color: Colors.white, fontSize: 20),
-                )
-              ],
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ShippingPage()));
+            },
+            child: Container(
+              margin:
+              const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+              padding: const EdgeInsets.all(15),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.indigo,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                children: [
+                  const Text(
+                    "Check out",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    "\$${hisobla()}",
+                    style:
+                    const TextStyle(color: Colors.white, fontSize: 20),
+                  )
+                ],
+              ),
             ),
           ),
         ],
