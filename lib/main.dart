@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/core/app_theme.dart';
 import 'package:omework_5_6_1/pages/checkout_page.dart';
 import 'package:omework_5_6_1/pages/comments_page.dart';
 import 'package:omework_5_6_1/pages/finally_page.dart';
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       home: SigninPage(),
     );

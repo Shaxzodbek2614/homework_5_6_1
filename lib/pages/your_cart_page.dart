@@ -57,7 +57,7 @@ class _YourCartPageState extends State<YourCartPage> {
         ),
         title: const Text(
           "Your Cart",
-          style: TextStyle(fontSize: 30, color: Colors.black),
+          style: TextStyle(fontSize: 30),
         ),
         actions: [
           Padding(

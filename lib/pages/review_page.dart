@@ -16,7 +16,7 @@ class _ReviewPageState extends State<ReviewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.map["name"],style: TextStyle(fontSize: 30,color: Colors.black),),),
+      appBar: AppBar(title: Text(widget.map["name"],style: TextStyle(fontSize: 30),),),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

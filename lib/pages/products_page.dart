@@ -12,7 +12,7 @@ class ProductsPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             "Product List",
-            style: TextStyle(fontSize: 30, color: Colors.black),
+            style: TextStyle(fontSize: 30,),
           ),
           actions: [
             Padding(

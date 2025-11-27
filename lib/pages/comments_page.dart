@@ -22,7 +22,7 @@ class CommentsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "Reviews(45)",
-          style: TextStyle(fontSize: 30, color: Colors.black),
+          style: TextStyle(fontSize: 30),
         ),
       ),
       body: Padding(

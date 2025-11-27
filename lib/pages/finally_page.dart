@@ -43,7 +43,8 @@ class Finally extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductsPage()));
-                }, child: Text("Continue shopping"),style: ElevatedButton.styleFrom(
+                }, child: Text("Continue shopping"),
+                  style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.indigo,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
