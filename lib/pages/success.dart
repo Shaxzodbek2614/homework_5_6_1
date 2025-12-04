@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/signin_page.dart';
 
 class Success extends StatelessWidget {
@@ -20,15 +21,15 @@ class Success extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Congratulation",
+                  context.l10n.tabriklayman,
                   style: TextStyle(fontSize: 38, color: Colors.indigo),
                 ),
                 Text(
-                  "Your account has been",
+                  context.l10n.your_account,
                   style: TextStyle(color: Colors.indigo, fontSize: 20),
                 ),
                 Text(
-                  "successfully created ",
+                  context.l10n.successfully_created,
                   style: TextStyle(color: Colors.indigo, fontSize: 20),
                 ),
               ],
@@ -42,7 +43,7 @@ class Success extends StatelessWidget {
             height: 50,
             child: ElevatedButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>SigninPage()));
-            }, child: Text("Sign In"),style: ElevatedButton.styleFrom(
+            }, child: Text(context.l10n.tizimga_kirish),style: ElevatedButton.styleFrom(
               backgroundColor: Colors.indigo,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(

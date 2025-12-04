@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/l10n/inherited_locale.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/products_page.dart';
 import 'package:omework_5_6_1/pages/signup_page.dart';
 
@@ -10,9 +12,37 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+  List<String> list = ["uz","en"];
+  String selected = "uz";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xfff9e6bb),
+        actions: [
+
+        DropdownButton<String>(
+          value: selected,
+          icon: const Icon(Icons.language),
+          onChanged: (String? newValue) {
+            if(newValue=="uz"){
+              context.local.value = InheritedLocale.uzbLocale;
+            }else if(newValue=="en"){
+              context.local.value = InheritedLocale.englishLocale;
+            }
+            setState(() {
+              selected = newValue!;
+            });
+          },
+          items: list.map<DropdownMenuItem<String>>((String city) {
+            return DropdownMenuItem<String>(
+              value: city,
+              child: Text(city),
+            );
+          }).toList(),
+        ),
+          SizedBox(width: 10,),
+      ],),
       backgroundColor: Color(0xfff9e6bb),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -20,17 +50,17 @@ class _SigninPageState extends State<SigninPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Sign In",style: TextStyle(fontSize: 30,color: Colors.indigo),),
+            Text(context.l10n.tizimga_kirish,style: TextStyle(fontSize: 30,color: Colors.indigo),),
             SizedBox(height: 30,),
             TextField(
               decoration: InputDecoration(
-                hintText: "Email",
+                hintText: context.l10n.email,
               ),
             ),
             SizedBox(height: 20,),
             TextField(
               decoration: InputDecoration(
-                hintText: "Password",
+                hintText: context.l10n.login,
               ),
             ),
             SizedBox(height: 30,),
@@ -45,7 +75,7 @@ class _SigninPageState extends State<SigninPage> {
                 )
               ), child: Padding(
                 padding: EdgeInsets.all(18.0),
-                child: Text("Sign In",style: TextStyle(color: Colors.white),),
+                child: Text(context.l10n.tizimga_kirish,style: TextStyle(color: Colors.white),),
               ),),
             ),
             SizedBox(height: 30,),
@@ -57,17 +87,17 @@ class _SigninPageState extends State<SigninPage> {
                 )
               ), child: Padding(
                 padding: EdgeInsets.all(18.0),
-                child: Text("Sign in with Facebook",style: TextStyle(color: Colors.indigo),),
+                child: Text(context.l10n.ikkinchi_tugma,style: TextStyle(color: Colors.indigo),),
               ),),
             ),
             SizedBox(height: 10,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account?"),
+                Text(context.l10n.dont_have_account),
                 TextButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
-                }, child: Text("Sign Up",style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold),))
+                }, child: Text(context.l10n.royxatdan_otish,style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold),))
                 
               ],
             )

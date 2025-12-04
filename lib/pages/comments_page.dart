@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 
 class CommentsPage extends StatelessWidget {
    CommentsPage({super.key});
@@ -21,7 +22,7 @@ class CommentsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Reviews(45)",
+          "${context.l10n.sharhlar}(45)",
           style: TextStyle(fontSize: 30),
         ),
       ),
@@ -71,7 +72,7 @@ class CommentsPage extends StatelessWidget {
                               },
                             ),
                             SizedBox(width: 10,),
-                            Text("Review left on Jan 06,2020",style: TextStyle(color: Colors.grey),)
+                            Text(context.l10n.sana,style: TextStyle(color: Colors.grey),)
                           ],
                         )
                       ],

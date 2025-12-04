@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:omework_5_6_1/core/app_theme.dart';
-import 'package:omework_5_6_1/pages/checkout_page.dart';
-import 'package:omework_5_6_1/pages/comments_page.dart';
-import 'package:omework_5_6_1/pages/finally_page.dart';
-import 'package:omework_5_6_1/pages/home_page.dart';
-import 'package:omework_5_6_1/pages/payment.dart';
-import 'package:omework_5_6_1/pages/products_page.dart';
-import 'package:omework_5_6_1/pages/review_page.dart';
-import 'package:omework_5_6_1/pages/shipping_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:omework_5_6_1/l10n/inherited_locale.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/signin_page.dart';
-import 'package:omework_5_6_1/pages/signup_page.dart';
-import 'package:omework_5_6_1/pages/success.dart';
-import 'package:omework_5_6_1/pages/your_cart_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      InheritedLocale(locale: ValueNotifier<Locale>(InheritedLocale.uzbLocale),
+          child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,13 +17,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      themeMode: ThemeMode.system,
-      debugShowCheckedModeBanner: false,
-      home: SigninPage(),
-    );
+    return ValueListenableBuilder(
+        valueListenable: context.local, builder: (context,locale,child){
+          return MaterialApp(
+            locale: locale,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales:AppLocalizations.supportedLocales,
+            theme: AppTheme.light,
+            darkTheme: AppTheme.dark,
+            themeMode: ThemeMode.system,
+            debugShowCheckedModeBanner: false,
+            home: SigninPage(),
+          );
+    });
   }
 }
 

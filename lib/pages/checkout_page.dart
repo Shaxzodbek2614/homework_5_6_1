@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/finally_page.dart';
 
 class CheckoutPage extends StatelessWidget {
@@ -15,7 +16,7 @@ class CheckoutPage extends StatelessWidget {
           height: 1,
         ),
       ),
-        title: Text("Checkout", style: TextStyle(
+        title: Text(context.l10n.chek_out, style: TextStyle(
             color: Colors.black, fontWeight: FontWeight.bold),),),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,8 +26,8 @@ class CheckoutPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Shipping Address",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
-                Text("Change",style: TextStyle(color: Colors.blue),)
+                Text(context.l10n.yetkazish_adress,style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+                Text(context.l10n.change,style: TextStyle(color: Colors.blue),)
               ],
             ),
           ),
@@ -42,8 +43,8 @@ class CheckoutPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Payment",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
-                Text("Change",style: TextStyle(color: Colors.blue),)
+                Text(context.l10n.pay,style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+                Text(context.l10n.change,style: TextStyle(color: Colors.blue),)
               ],
             ),
           ),
@@ -78,7 +79,7 @@ class CheckoutPage extends StatelessWidget {
           Divider(color: Colors.grey,),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: Text("Review Products",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+            child: Text(context.l10n.review,style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -134,8 +135,8 @@ class CheckoutPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const Text(
-                    "Place Order",
+                   Text(
+                    context.l10n.buyurtma,
                     style: TextStyle(color: Colors.grey, fontSize: 16),
                   ), Text(
                     "\$1079",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/review_page.dart';
 
 class ProductsPage extends StatelessWidget {
@@ -11,7 +12,7 @@ class ProductsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Product List",
+            context.l10n.mahsulotlar_list,
             style: TextStyle(fontSize: 30,),
           ),
           actions: [
@@ -22,26 +23,32 @@ class ProductsPage extends StatelessWidget {
           ],
           bottom: TabBar(
             tabs: [
-              Tab(text: "New"),
-              Tab(text: "Furniture"),
-              Tab(text: "Electronic"),
-              Tab(text: "Fashions"),
+              Tab(text: context.l10n.yangi),
+              Tab(text: context.l10n.mebel),
+              Tab(text: context.l10n.elektronika),
+              Tab(text: context.l10n.fashions),
+
             ],
           ),
         ),
-        body: TabBarView(children: [New(), New(), New(), New()]),
+        body: TabBarView(children: [New(context), New(context), New(context), New(context)]),
       ),
     );
   }
 }
 
 class New extends StatelessWidget {
-  List<Map<String,dynamic>> list = [
-    {"image":"assets/images/img_1.png","price":887.00,"color":Color(0xffd3f1fd),"name":"Orange chair","soni":1},
-    {"image":"assets/images/img_2.png","price":2800.00,"color":Color(0xfff9e6bb),"name":"Idish","soni":1},
-    {"image":"assets/images/img_3.png","price":150.00,"color":Color(0xffe5f6f5),"name":"Sumka","soni":1},
-    {"image":"assets/images/img_1.png","price":887.00,"color":Color(0xffd3f1fd),"name":"Orange chair","soni":1},
-  ];
+  BuildContext context;
+  New(this.context);
+  List<Map<String,dynamic>> list(){
+    var list1 = [
+      {"image":"assets/images/img_1.png","price":887.00,"color":Color(0xffd3f1fd),"name":context.l10n.orange_chair,"soni":1},
+      {"image":"assets/images/img_2.png","price":2800.00,"color":Color(0xfff9e6bb),"name":context.l10n.idish,"soni":1},
+      {"image":"assets/images/img_3.png","price":150.00,"color":Color(0xffe5f6f5),"name":context.l10n.sumka,"soni":1},
+      {"image":"assets/images/img_1.png","price":887.00,"color":Color(0xffd3f1fd),"name":context.l10n.orange_chair,"soni":1},
+    ];
+    return list1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +64,7 @@ class New extends StatelessWidget {
           ),
           itemCount: 4,
           itemBuilder: (context, index) {
-            var item = list[index];
+            var item = list()[index];
             return GestureDetector(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>ReviewPage(map: item,)));

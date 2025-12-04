@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/payment.dart';
 
 class ShippingPage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _ShippingPageState extends State<ShippingPage> {
           height: 1,
         ),
       ),
-      title: Text("Shipping Address",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),),
+      title: Text(context.l10n.yetkazish_adress,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),),
 
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -57,24 +58,24 @@ class _ShippingPageState extends State<ShippingPage> {
             SizedBox(height: 20,),
             TextField(
               decoration: InputDecoration(
-                labelText: "Town/City"
+                labelText: context.l10n.town_city
               ),
             ),
             SizedBox(height: 20,),
             TextField(
               decoration: InputDecoration(
-                  labelText: "Postcode"
+                  labelText: context.l10n.pochta_index
               ),
             ),
             SizedBox(height: 20,),
             TextField(
               decoration: InputDecoration(
-                  labelText: "Street"
+                  labelText: context.l10n.kocha
               ),
             ),
             SizedBox(height: 20,),
-            Text("This will be your default shipping address",style: TextStyle(fontSize: 12,color: Colors.grey),),
-            Text("This will be your default shipping address",style: TextStyle(fontSize: 12,color: Colors.grey),),
+            Text(context.l10n.matn,style: TextStyle(fontSize: 12,color: Colors.grey),),
+            Text(context.l10n.matn,style: TextStyle(fontSize: 12,color: Colors.grey),),
             Spacer(),
             Container(
               width: double.infinity,
@@ -82,7 +83,7 @@ class _ShippingPageState extends State<ShippingPage> {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment()));
               }, child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
-                child: Text("Next",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                child: Text(context.l10n.next,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
               ),style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.indigo,
                   shape: RoundedRectangleBorder(

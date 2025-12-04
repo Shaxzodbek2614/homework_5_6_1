@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/products_page.dart';
 import 'package:omework_5_6_1/pages/shipping_page.dart';
 
@@ -55,8 +56,8 @@ class _YourCartPageState extends State<YourCartPage> {
             height: 1,
           ),
         ),
-        title: const Text(
-          "Your Cart",
+        title:  Text(
+          context.l10n.your_cart,
           style: TextStyle(fontSize: 30),
         ),
         actions: [
@@ -69,16 +70,16 @@ class _YourCartPageState extends State<YourCartPage> {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: Text(
-                      'Empty cart',
+                      context.l10n.empty_cart,
                       overflow: TextOverflow.ellipsis,
                     ),
                     content: Text(
-                        'Are you sure you want to delete all items in your cart?'),
+                        context.l10n.dialogdagi_text),
                     actions: [
                       OutlinedButton(
                         onPressed: () =>
                             Navigator.pop(context),
-                        child: const Text('Cancel'),
+                        child: Text(context.l10n.bekor_qilish),
                       ),
                       OutlinedButton(
                         onPressed: () {
@@ -87,7 +88,7 @@ class _YourCartPageState extends State<YourCartPage> {
                             Navigator.pop(context);
                           });
                         },
-                        child: const Text('Empty cart'),
+                        child:  Text(context.l10n.empty_cart),
                       ),
                     ],
                   ),
@@ -102,8 +103,8 @@ class _YourCartPageState extends State<YourCartPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.shopping_basket,size: 30,),
-            Text("Your cart is empty",style: TextStyle(fontSize: 40,color: Colors.black,fontWeight: FontWeight.bold),),
-            Text("Looking for details ?"),
+            Text(context.l10n.your_cart_is_empty,style: TextStyle(fontSize: 40,color: Colors.black,fontWeight: FontWeight.bold),),
+            Text(context.l10n.looking),
             SizedBox(height: 20,),
             Container(
               width: double.infinity,
@@ -118,7 +119,7 @@ class _YourCartPageState extends State<YourCartPage> {
                   ),
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductsPage()));
-                  }, child: Text("Explore new Products")),
+                  }, child: Text(context.l10n.yangi_narsa)),
             )
           ],
         ),
@@ -173,16 +174,16 @@ class _YourCartPageState extends State<YourCartPage> {
                                         context: context,
                                         builder: (context) => AlertDialog(
                                           title: Text(
-                                            'Delete: "${item["name"]}"',
+                                            '${context.l10n.ochirish}: "${item["name"]}"',
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                           content: Text(
-                                              'Are you sure you want to delete "${item["name"]}" from your cart'),
+                                              '${context.l10n.qism1} "${item["name"]}" ${context.l10n.qism2}'),
                                           actions: [
                                             OutlinedButton(
                                               onPressed: () =>
                                                   Navigator.pop(context),
-                                              child: const Text('Cancel'),
+                                              child:  Text(context.l10n.bekor_qilish),
                                             ),
                                             OutlinedButton(
                                               onPressed: () {
@@ -191,7 +192,7 @@ class _YourCartPageState extends State<YourCartPage> {
                                                   Navigator.pop(context);
                                                 });
                                               },
-                                              child: const Text('Delete'),
+                                              child: Text(context.l10n.ochirish),
                                             ),
                                           ],
                                         ),
@@ -253,8 +254,8 @@ class _YourCartPageState extends State<YourCartPage> {
               ),
               child: Column(
                 children: [
-                  const Text(
-                    "Check out",
+                   Text(
+                    context.l10n.chek,
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                   const SizedBox(height: 5),

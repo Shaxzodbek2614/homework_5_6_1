@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/products_page.dart';
 import 'package:omework_5_6_1/pages/signin_page.dart';
 
@@ -21,15 +22,15 @@ class Finally extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Congratulation",
+                  context.l10n.tabriklayman,
                   style: TextStyle(fontSize: 38, color: Colors.indigo),
                 ),
                 Text(
-                  "Your account has been",
+                  context.l10n.your_cart,
                   style: TextStyle(color: Colors.indigo, fontSize: 20),
                 ),
                 Text(
-                  "successfully created ",
+                  context.l10n.successfully_created,
                   style: TextStyle(color: Colors.indigo, fontSize: 20),
                 ),
               ],
@@ -43,7 +44,7 @@ class Finally extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductsPage()));
-                }, child: Text("Continue shopping"),
+                }, child: Text(context.l10n.davom_etish),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.indigo,
                     foregroundColor: Colors.white,

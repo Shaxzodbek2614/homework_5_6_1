@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/comments_page.dart';
 import 'package:omework_5_6_1/pages/your_cart_page.dart';
 
@@ -47,7 +48,7 @@ class _ReviewPageState extends State<ReviewPage> {
               )
             ],
           ),
-          Text("Furniture",style: TextStyle(color: Colors.grey),),
+          Text(context.l10n.mebel,style: TextStyle(color: Colors.grey),),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -70,7 +71,7 @@ class _ReviewPageState extends State<ReviewPage> {
               SizedBox(width: 10,),
               TextButton(onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>CommentsPage()));
-              }, child: Text("124 views",style: TextStyle(color: Colors.blue),),),
+              }, child: Text("124 ${context.l10n.views}",style: TextStyle(color: Colors.blue),),),
             ],
           ),
           Container(
@@ -86,7 +87,7 @@ class _ReviewPageState extends State<ReviewPage> {
                 ),
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>YourCartPage(item: widget.map)));
-                }, child: Text("Add to Cart")),
+                }, child: Text(context.l10n.add_to)),
           )
         ],
       ),
@@ -97,21 +98,21 @@ class _ReviewPageState extends State<ReviewPage> {
             _selectedIndex = index;
           });
         },
-        destinations: const <NavigationDestination>[
+        destinations: <NavigationDestination>[
           NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: 'Home',
+            icon: const Icon(Icons.home_outlined),
+            selectedIcon: const Icon(Icons.home),
+            label: context.l10n.uy,
           ),
-          NavigationDestination(
+           NavigationDestination(
             icon: Icon(Icons.cases_outlined),
             selectedIcon: Icon(Icons.cases_rounded),
-            label: 'Search',
+            label: context.l10n.qidirish,
           ),
-          NavigationDestination(
+           NavigationDestination(
             icon: Icon(Icons.favorite_border),
             selectedIcon: Icon(Icons.favorite),
-            label: 'Likes',
+            label: context.l10n.likes,
           ),
         ],
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/signin_page.dart';
 import 'package:omework_5_6_1/pages/success.dart';
 
@@ -14,29 +15,29 @@ class SignUp extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Sign Up",style: TextStyle(fontSize: 30,color: Colors.indigo,fontWeight: FontWeight.bold),),
+            Text(context.l10n.royxatdan_otish,style: TextStyle(fontSize: 30,color: Colors.indigo,fontWeight: FontWeight.bold),),
             SizedBox(height: 20,),
             TextField(
               decoration: InputDecoration(
-                hintText: "Name"
+                hintText: context.l10n.ism
               ),
             ),
             SizedBox(height: 10,),
             TextField(
               decoration: InputDecoration(
-                  hintText: "Email"
+                  hintText: context.l10n.email
               ),
             ),
             SizedBox(height: 10,),
             TextField(
               decoration: InputDecoration(
-                  hintText: "Password"
+                  hintText: context.l10n.login
               ),
             ),
             SizedBox(height: 10,),
             TextField(
               decoration: InputDecoration(
-                  hintText: "Confirm password"
+                  hintText: context.l10n.parol_tasdiqlash
               ),
             ),
             SizedBox(height: 35,),
@@ -46,7 +47,7 @@ class SignUp extends StatelessWidget{
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Success()));
               }, child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
-                child: Text("Sign Up",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                child: Text(context.l10n.royxatdan_otish,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
               ),style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.indigo,
                 shape: RoundedRectangleBorder(
@@ -58,10 +59,10 @@ class SignUp extends StatelessWidget{
 
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Already have an account?"),
+                Text(context.l10n.allaqachon),
                 TextButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>SigninPage()));
-                }, child: Text("Sign In"))
+                }, child: Text(context.l10n.tizimga_kirish))
               ],
             )
           ],

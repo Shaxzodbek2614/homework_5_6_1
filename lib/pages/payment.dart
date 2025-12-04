@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/checkout_page.dart';
 
 class Payment extends StatelessWidget {
@@ -16,7 +17,7 @@ class Payment extends StatelessWidget {
             height: 1,
           ),
         ),
-          title: Text("Payment Method", style: TextStyle(
+          title: Text(context.l10n.payment, style: TextStyle(
               color: Colors.black, fontWeight: FontWeight.bold),),),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -83,20 +84,20 @@ class Payment extends StatelessWidget {
                 SizedBox(height: 20,),
                 TextField(
                   decoration: InputDecoration(
-                      labelText: "Name"
+                      labelText: context.l10n.ism
                   ),
                 ),
                 SizedBox(height: 20,),
                 TextField(
                   obscureText: true,
                   decoration: InputDecoration(
-                      labelText: "Card number"
+                      labelText: context.l10n.karta_raqam
                   ),
                 ),
                 SizedBox(height: 20,),
                 TextField(
                   decoration: InputDecoration(
-                      labelText: "Expiry date"
+                      labelText: context.l10n.vaqt
                   ),
                 ),
                 SizedBox(height: 20,),
@@ -120,7 +121,7 @@ class Payment extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 10,),
-                    Text("Set as your default payment method"),
+                    Text(context.l10n.payment_matn),
                   ],
                 ),
               ],
@@ -133,7 +134,7 @@ class Payment extends StatelessWidget {
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutPage()));
             },
-            child: Text("Next",style: TextStyle(color: Colors.white),),
+            child: Text(context.l10n.next,style: TextStyle(color: Colors.white),),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.indigo,
               padding: EdgeInsets.symmetric(vertical: 15),
