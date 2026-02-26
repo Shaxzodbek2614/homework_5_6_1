@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/checkout_page.dart';
+
+import '../core/app_route.dart';
 
 class Payment extends StatelessWidget {
   const Payment({super.key});
@@ -132,7 +135,7 @@ class Payment extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutPage()));
+              context.go(Routes.checkout);
             },
             child: Text(context.l10n.next,style: TextStyle(color: Colors.white),),
             style: ElevatedButton.styleFrom(

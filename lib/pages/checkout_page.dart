@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/finally_page.dart';
+
+import '../core/app_route.dart';
 
 class CheckoutPage extends StatelessWidget {
   const CheckoutPage({super.key});
@@ -122,7 +125,7 @@ class CheckoutPage extends StatelessWidget {
           Spacer(),
           GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Finally()));
+              context.go(Routes.finalPage);
             },
             child: Container(
               margin:

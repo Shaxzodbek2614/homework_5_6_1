@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/review_page.dart';
+import 'package:provider/provider.dart';
+
+import '../core/app_route.dart';
+import '../models/product.dart';
+import '../providers/product_provider.dart';
 
 class ProductsPage extends StatelessWidget {
   const ProductsPage({super.key});
@@ -31,27 +37,34 @@ class ProductsPage extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(children: [New(context), New(context), New(context), New(context)]),
+        body: TabBarView(children: [New(), New(), New(), New()]),
       ),
     );
   }
 }
 
 class New extends StatelessWidget {
-  BuildContext context;
-  New(this.context);
-  List<Map<String,dynamic>> list(){
-    var list1 = [
-      {"image":"assets/images/img_1.png","price":887.00,"color":Color(0xffd3f1fd),"name":context.l10n.orange_chair,"soni":1},
-      {"image":"assets/images/img_2.png","price":2800.00,"color":Color(0xfff9e6bb),"name":context.l10n.idish,"soni":1},
-      {"image":"assets/images/img_3.png","price":150.00,"color":Color(0xffe5f6f5),"name":context.l10n.sumka,"soni":1},
-      {"image":"assets/images/img_1.png","price":887.00,"color":Color(0xffd3f1fd),"name":context.l10n.orange_chair,"soni":1},
-    ];
-    return list1;
-  }
+  const New({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<ProductProvider>();
+    final l10n = context.l10n;
+
+    // localization bo‘yicha product name update qilamiz
+    final products = provider.products.asMap().entries.map((entry) {
+      final index = entry.key;
+      final product = entry.value;
+      return Product(
+        id: product.id,
+        image: product.image,
+        color: product.color,
+        soni: product.soni,
+        price: product.price,
+        // har bir productga translation beramiz
+        name: l10n.orange_chair + ' ${index + 1}',
+      );
+    }).toList();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10),
@@ -62,12 +75,13 @@ class New extends StatelessWidget {
             crossAxisSpacing: 10,
             childAspectRatio: 0.6
           ),
-          itemCount: 4,
+          itemCount: products.length,
           itemBuilder: (context, index) {
-            var item = list()[index];
+            var item = products[index];
             return GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ReviewPage(map: item,)));
+                provider.selectProduct(item);
+                context.go(Routes.review);
               },
               child: Column(
                 children: [
@@ -78,9 +92,9 @@ class New extends StatelessWidget {
                       padding: EdgeInsets.all(30),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        color: item["color"],
+                        color: item.color,
                       ),
-                      child: Image.asset(item["image"], width: 50),
+                      child: Image.asset(item.image, width: 50),
                     ),
                   ),
                   Expanded(
@@ -88,7 +102,7 @@ class New extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                      Text("\$${item["price"]}"),
+                      Text("\$${item.price}"),
                       Icon(Icons.more_horiz)
                     ],),
                   )

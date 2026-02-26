@@ -1,51 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/products_page.dart';
 import 'package:omework_5_6_1/pages/shipping_page.dart';
+import 'package:provider/provider.dart';
+
+import '../core/app_route.dart';
+import '../models/product.dart';
+import '../providers/product_provider.dart';
 
 class YourCartPage extends StatefulWidget {
-  final Map<String, dynamic> item;
-  const YourCartPage({super.key, required this.item});
+  const YourCartPage({super.key});
 
   @override
   State<YourCartPage> createState() => _YourCartPageState();
 }
 
 class _YourCartPageState extends State<YourCartPage> {
-  List<Map<String, dynamic>> list = [
-    {
-      "image": "assets/images/img_1.png",
-      "price": 887.00,
-      "color": Color(0xffd3f1fd),
-      "name": "Orange chair",
-      "soni": 1
-    },
-    {
-      "image": "assets/images/img_2.png",
-      "price": 2800.00,
-      "color": Color(0xfff9e6bb),
-      "name": "Idish",
-      "soni": 1
-    },
-  ];
+  late List<Product> list;
+
+
 
   @override
-  void initState() {
-    super.initState();
-    // faqat bir marta item qo‘shiladi
-    list.add(widget.item);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+      final provider = context.watch<ProductProvider>();
+      final product = provider.selectedProduct;
+      list = [
+        Product(id: 1, image: "assets/images/img_1.png", color: Color(0xffd3f1fd), soni: 1, price: 887.0, name: context.l10n.orange_chair,),
+        Product(id: 1, image: "assets/images/img_2.png", color: Color(0xfff9e6bb), soni: 1, price: 2800.0, name: context.l10n.idish,),
+      ];
+      if (product != null) {
+        list.add(product);
+      }
+
   }
 
   double hisobla() {
     var sum = 0.0;
     for (var i in list) {
-      sum += i["soni"] * i["price"];
+      sum += i.soni * i.price;
     }
     return sum;
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         bottom: PreferredSize(
@@ -118,7 +119,7 @@ class _YourCartPageState extends State<YourCartPage> {
                       )
                   ),
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductsPage()));
+                    context.go(Routes.products);
                   }, child: Text(context.l10n.yangi_narsa)),
             )
           ],
@@ -140,10 +141,10 @@ class _YourCartPageState extends State<YourCartPage> {
                         height: 80,
                         padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                          color: item["color"],
+                          color: item.color,
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Image.asset(item["image"]),
+                        child: Image.asset(item.image),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
@@ -151,7 +152,7 @@ class _YourCartPageState extends State<YourCartPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              item["name"],
+                              item.name!,
                               style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 18,
@@ -174,11 +175,11 @@ class _YourCartPageState extends State<YourCartPage> {
                                         context: context,
                                         builder: (context) => AlertDialog(
                                           title: Text(
-                                            '${context.l10n.ochirish}: "${item["name"]}"',
+                                            '${context.l10n.ochirish}: "${item.name}"',
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                           content: Text(
-                                              '${context.l10n.qism1} "${item["name"]}" ${context.l10n.qism2}'),
+                                              '${context.l10n.qism1} "${item.name}" ${context.l10n.qism2}'),
                                           actions: [
                                             OutlinedButton(
                                               onPressed: () =>
@@ -202,7 +203,7 @@ class _YourCartPageState extends State<YourCartPage> {
                                   ),
                                 ),
                                 const SizedBox(width: 15),
-                                Text("${item["soni"]}"),
+                                Text("${item.soni}"),
                                 const SizedBox(width: 15),
                                 Container(
                                   alignment: Alignment.center,
@@ -215,7 +216,7 @@ class _YourCartPageState extends State<YourCartPage> {
                                   child: InkWell(
                                     onTap: () {
                                       setState(() {
-                                        item["soni"]++;
+                                        item.soni++;
                                       });
                                     },
                                     child: const Icon(Icons.add, size: 16),
@@ -223,7 +224,7 @@ class _YourCartPageState extends State<YourCartPage> {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  "\$${item["price"]}",
+                                  "\$${item.price}",
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16),
@@ -241,7 +242,7 @@ class _YourCartPageState extends State<YourCartPage> {
           ),
           GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ShippingPage()));
+              context.go(Routes.shipping);
             },
             child: Container(
               margin:

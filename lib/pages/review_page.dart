@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/comments_page.dart';
 import 'package:omework_5_6_1/pages/your_cart_page.dart';
+import 'package:provider/provider.dart';
+
+import '../core/app_route.dart';
+import '../providers/product_provider.dart';
 
 class ReviewPage extends StatefulWidget {
-  final Map<String,dynamic> map;
-  const ReviewPage({super.key,required this.map});
+  const ReviewPage({super.key});
 
   @override
   State<ReviewPage> createState() => _ReviewPageState();
@@ -16,8 +20,9 @@ class _ReviewPageState extends State<ReviewPage> {
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final product = context.watch<ProductProvider>().selectedProduct;
     return Scaffold(
-      appBar: AppBar(title: Text(widget.map["name"],style: TextStyle(fontSize: 30),),),
+      appBar: AppBar(title: Text(product!.name!,style: TextStyle(fontSize: 30),),),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,9 +32,9 @@ class _ReviewPageState extends State<ReviewPage> {
               Container(
                 width: double.infinity,
                 height: 350,
-                color: widget.map["color"],
+                color: product.color,
                 padding: EdgeInsets.all(50),
-                child: Image.asset(widget.map["image"]),
+                child: Image.asset(product.image),
               ),
               Positioned(
                 right: 30,
@@ -42,7 +47,7 @@ class _ReviewPageState extends State<ReviewPage> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("\$${widget.map["price"]}"),
+                    child: Text("\$${product.price}"),
                   ),
                 ),
               )
@@ -70,7 +75,7 @@ class _ReviewPageState extends State<ReviewPage> {
               ),
               SizedBox(width: 10,),
               TextButton(onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>CommentsPage()));
+                context.go(Routes.comment);
               }, child: Text("124 ${context.l10n.views}",style: TextStyle(color: Colors.blue),),),
             ],
           ),
@@ -86,7 +91,7 @@ class _ReviewPageState extends State<ReviewPage> {
                     )
                 ),
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>YourCartPage(item: widget.map)));
+                  context.go(Routes.cart);
                 }, child: Text(context.l10n.add_to)),
           )
         ],

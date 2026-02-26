@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/products_page.dart';
 import 'package:omework_5_6_1/pages/signin_page.dart';
+
+import '../core/app_route.dart';
 
 class Finally extends StatelessWidget {
   const Finally({super.key});
@@ -43,7 +46,7 @@ class Finally extends StatelessWidget {
               child: Container(
                 height: 50,
                 child: ElevatedButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductsPage()));
+                  context.go(Routes.products);
                 }, child: Text(context.l10n.davom_etish),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.indigo,

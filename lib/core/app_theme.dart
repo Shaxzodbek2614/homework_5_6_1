@@ -16,7 +16,7 @@ abstract final class AppTheme {
       iconTheme: IconThemeData(color: AppColors.neutral900),
     ),
 
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: AppColors.lightSurface,
       elevation: 2,
       shape: RoundedRectangleBorder(
@@ -65,7 +65,7 @@ abstract final class AppTheme {
       labelStyle: const TextStyle(color: AppColors.neutral700),
     ),
 
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       backgroundColor: AppColors.lightSurface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
@@ -88,7 +88,7 @@ abstract final class AppTheme {
       iconTheme: IconThemeData(color: AppColors.darkText),
     ),
 
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: AppColors.darkSurface,
       elevation: 1,
       shape: RoundedRectangleBorder(
@@ -138,7 +138,7 @@ abstract final class AppTheme {
       labelStyle: const TextStyle(color: AppColors.darkTextMuted),
     ),
 
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       backgroundColor: AppColors.darkSurface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),

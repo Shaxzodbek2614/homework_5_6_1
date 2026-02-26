@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/inherited_locale.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/products_page.dart';
 import 'package:omework_5_6_1/pages/signup_page.dart';
+
+import '../core/app_route.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({super.key});
@@ -67,7 +70,7 @@ class _SigninPageState extends State<SigninPage> {
             Container(
               width: double.infinity,
               child: ElevatedButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductsPage()));
+                context.go(Routes.products);
               },style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.indigo,
                 shape: RoundedRectangleBorder(
@@ -96,7 +99,7 @@ class _SigninPageState extends State<SigninPage> {
               children: [
                 Text(context.l10n.dont_have_account),
                 TextButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
+                  context.go(Routes.signup);
                 }, child: Text(context.l10n.royxatdan_otish,style: TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold),))
                 
               ],

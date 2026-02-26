@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/signin_page.dart';
 import 'package:omework_5_6_1/pages/success.dart';
 
+import '../core/app_route.dart';
+
 class SignUp extends StatelessWidget{
+  const SignUp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +49,7 @@ class SignUp extends StatelessWidget{
             Container(
               width: double.infinity,
               child: ElevatedButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Success()));
+                context.go(Routes.success);
               }, child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: Text(context.l10n.royxatdan_otish,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
@@ -61,7 +66,7 @@ class SignUp extends StatelessWidget{
               children: [
                 Text(context.l10n.allaqachon),
                 TextButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SigninPage()));
+                  context.pop();
                 }, child: Text(context.l10n.tizimga_kirish))
               ],
             )

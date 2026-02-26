@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/signin_page.dart';
+
+import '../core/app_route.dart';
 
 class Success extends StatelessWidget {
   const Success({super.key});
@@ -42,7 +45,7 @@ class Success extends StatelessWidget {
               child: Container(
             height: 50,
             child: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>SigninPage()));
+              context.go(Routes.signin);
             }, child: Text(context.l10n.tizimga_kirish),style: ElevatedButton.styleFrom(
               backgroundColor: Colors.indigo,
               foregroundColor: Colors.white,

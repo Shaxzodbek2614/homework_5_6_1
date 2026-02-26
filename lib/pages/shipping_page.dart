@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:omework_5_6_1/l10n/l10n.dart';
 import 'package:omework_5_6_1/pages/payment.dart';
+
+import '../core/app_route.dart';
 
 class ShippingPage extends StatefulWidget {
   const ShippingPage({super.key});
@@ -80,7 +83,7 @@ class _ShippingPageState extends State<ShippingPage> {
             Container(
               width: double.infinity,
               child: ElevatedButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment()));
+                context.go(Routes.payment);
               }, child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: Text(context.l10n.next,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),

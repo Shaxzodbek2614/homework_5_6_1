@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:omework_5_6_1/core/app_route.dart';
 import 'package:omework_5_6_1/pages/products_page.dart';
+import 'package:omework_5_6_1/pages/signin_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -35,7 +38,7 @@ class HomePage extends StatelessWidget {
                     )
                   ),
                     onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductsPage()));
+                    context.go(Routes.signin);
                 }, child: Text("Explore")),
               )
 
